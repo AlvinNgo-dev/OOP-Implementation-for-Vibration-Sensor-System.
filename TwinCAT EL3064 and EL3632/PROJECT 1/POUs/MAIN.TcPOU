@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.16">
+  <POU Name="MAIN" Id="{59796ef4-e6b1-401a-9440-11e7277419ec}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	READ_DATA_1 : INT;
+	READ_DATA_2 : INT;
+	READ_DATA_3 : INT;
+	READ_DATA_4 : INT;
+	READ_DATA_5 : INT;
+	READ_DATA_6 : INT;
+	READ_DATA_7 : INT;
+	READ_DATA_8 : INT;
+	READ_DATA_9 : INT;
+	READ_DATA_10 : INT;
+	nAnalog AT %I* : ARRAY [1..10] OF INT; 
+	SAMPLE_COUNT_READ AT %I* : UINT;
+	ReadError : BOOL;
+	iEL3064_READ_1 AT %I*: INT;
+	iEL3064_READ_2 AT %I*: INT;
+	iEL3064_READ_3 AT %I*: INT;
+	iEL3064_READ_4 AT %I*: INT;
+	iEL3064_1 : REAL;
+	iEL3064_2 : REAL;
+	iEL3064_3 : REAL;
+	iEL3064_4 : REAL;
+	Test: REAL; 
+	iTemp AT %I* :UINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[READ_DATA_1 := nAnalog[1]/10;
+READ_DATA_2 := nAnalog[2]/10;
+READ_DATA_3 := nAnalog[3]/10;
+READ_DATA_4 := nAnalog[4]/10;
+READ_DATA_5 := nAnalog[5]/10;
+READ_DATA_6 := nAnalog[6]/10;
+READ_DATA_7 := nAnalog[7]/10;
+READ_DATA_8 := nAnalog[8]/10;
+READ_DATA_9 := nAnalog[9]/10;
+READ_DATA_10 := nAnalog[10]/10;
+
+iEL3064_1 := (INT_TO_REAL(iEL3064_READ_1) *10) / 32767.00;
+iEL3064_2 := (INT_TO_REAL(iEL3064_READ_2) *10) / 32767.00;
+iEL3064_3 := (INT_TO_REAL(iEL3064_READ_3) *10) / 32767.00;
+iEL3064_4 := (INT_TO_REAL(iEL3064_READ_4) *10) / 32767.00;
+
+Test := UINT_TO_REAL(iTemp)/(32767)*10;
+
+IF iEL3064_1 >= 0.5 OR iEL3064_2 >= 0.5 OR iEL3064_3 >= 0.5 OR iEL3064_4 >= 0.5 THEN 
+	ReadError := false;
+ELSE
+	ReadError := true ;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="138" Count="0" />
+      <LineId Id="69" Count="8" />
+      <LineId Id="79" Count="1" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="90" Count="1" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="94" Count="0" />
+      <LineId Id="96" Count="0" />
+      <LineId Id="92" Count="0" />
+      <LineId Id="107" Count="0" />
+      <LineId Id="109" Count="1" />
+      <LineId Id="108" Count="0" />
+      <LineId Id="170" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
