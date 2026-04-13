@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.16">
+  <POU Name="FB_EL3064_Module" Id="{9d201905-f01c-4ffa-b397-59a9a10c95b2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_EL3064_Module
+VAR_INPUT
+    Enable : BOOL := TRUE;
+END_VAR
+
+VAR_OUTPUT
+    AnyError : BOOL;
+END_VAR
+
+VAR
+	Channels AT %I* : ARRAY[1..4] OF INT;
+    RawInputs AT %I* : ARRAY[1..4] OF INT;
+	VOLTAGE_1 : REAL;
+	VOLTAGE_2 : REAL;
+	VOLTAGE_3 : REAL;
+	VOLTAGE_4 : REAL;
+	ScaleFactor : REAL := 10.0 / 32767.0;
+    Threshold   : REAL := 0.5;
+	Error : BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Check_error" Id="{02a9c999-ea26-46e0-89d9-7f3b8d161930}">
+      <Declaration><![CDATA[METHOD PUBLIC Check_error : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[Error := VOLTAGE_1 < Threshold;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Execute" Id="{36067786-9e5d-477d-9d0c-456189522a0f}">
+      <Declaration><![CDATA[METHOD PUBLIC Execute
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[AnyError := FALSE;
+IF NOT Enable THEN
+    RETURN;
+END_IF
+
+VOLTAGE_1 := INT_TO_REAL(RawInputs[1]); 
+VOLTAGE_2 := INT_TO_REAL(RawInputs[2]) * ScaleFactor;
+VOLTAGE_3 := INT_TO_REAL(RawInputs[3]) * ScaleFactor;
+VOLTAGE_4 := INT_TO_REAL(RawInputs[4]) * ScaleFactor;
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_EL3064_Module">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EL3064_Module.Check_error">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EL3064_Module.Execute">
+      <LineId Id="8" Count="0" />
+      <LineId Id="11" Count="3" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="16" Count="2" />
+      <LineId Id="15" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.16">
+  <POU Name="MAIN" Id="{59796ef4-e6b1-401a-9440-11e7277419ec}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	EL3632 : FB_AnalogChannel;
+	EL3064 : FB_EL3064_Module;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[EL3632.Execute();
+EL3064.Execute();
+EL3064.Check_error();]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="8" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

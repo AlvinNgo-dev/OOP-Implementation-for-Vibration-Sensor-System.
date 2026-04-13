@@ -11,6 +11,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"450"</v>
+              <v n="TextDefault">"%.1f V "</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"217"</v>
+              <v n="TextDefault">"%.lf V "</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"614"</v>
               <v n="TextDefault">"%f Sampling count "</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -28,6 +38,21 @@
             <o>
               <v n="TextID">"281"</v>
               <v n="TextDefault">"(m/s^{2})"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"373"</v>
+              <v n="TextDefault">"Channel 1"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"777"</v>
+              <v n="TextDefault">"Channel 2"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"910"</v>
+              <v n="TextDefault">"EL3064 Input Signal Voltage"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
