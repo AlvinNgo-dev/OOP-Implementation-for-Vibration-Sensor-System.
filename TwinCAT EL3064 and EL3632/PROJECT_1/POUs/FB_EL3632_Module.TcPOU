@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.16">
+  <POU Name="FB_EL3632_Module" Id="{7a69fcab-041e-48ea-afc2-224fd777fef6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_EL3632_Module IMPLEMENTS I_Module
+VAR_INPUT
+    RawValue_Ch1 AT %I* : ARRAY [1..10] OF INT;         // From %I*
+	RawValue_Ch2 AT %I* : ARRAY [1..10] OF INT;         // From %I*
+END_VAR
+
+VAR	
+    bEnable : BOOL := TRUE;
+    Scaled_Ch1 : ARRAY [1..10] OF REAL;
+    Scaled_Ch2 : ARRAY [1..10] OF REAL;
+    ScaleFactor : REAL := 1.0; // adjust if needed
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="Channel1" Id="{1eb46449-dc73-4cf3-8b85-d50aa184b2d5}">
+      <Declaration><![CDATA[PROPERTY PUBLIC Channel1 : ARRAY[1..10] OF REAL]]></Declaration>
+      <Get Name="Get" Id="{ce00e5c5-9f72-4e6c-ad5f-c3ac549c0026}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Channel1 := Scaled_Ch1;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Disable" Id="{b877b1ee-2842-4abf-8203-7482d6ec299c}">
+      <Declaration><![CDATA[METHOD PUBLIC Disable : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bEnable := FALSE;
+Disable := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Enable" Id="{47673d0d-236e-44ae-a76d-c20ab557bf77}">
+      <Declaration><![CDATA[METHOD PUBLIC Enable : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bEnable := TRUE;
+Enable := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Read_Scale" Id="{8e7c2f9a-0019-43cd-9e99-08de91b46eaa}">
+      <Declaration><![CDATA[METHOD PUBLIC Read_Scale
+VAR
+	i : INT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT bEnable THEN RETURN; END_IF
+
+FOR i := 1 TO 10 DO
+    Scaled_Ch1[i] := INT_TO_REAL(RawValue_Ch1[i]) * ScaleFactor;
+    Scaled_Ch2[i] := INT_TO_REAL(RawValue_Ch2[i]) * ScaleFactor;
+END_FOR]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Update" Id="{2791f0de-7095-471c-91d1-062d56bfe815}">
+      <Declaration><![CDATA[METHOD PUBLIC Update
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT bEnable THEN RETURN; END_IF
+
+Read_Scale();
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_EL3632_Module">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EL3632_Module.Channel1.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EL3632_Module.Disable">
+      <LineId Id="6" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EL3632_Module.Enable">
+      <LineId Id="6" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EL3632_Module.Read_Scale">
+      <LineId Id="6" Count="4" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EL3632_Module.Update">
+      <LineId Id="7" Count="1" />
+      <LineId Id="5" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

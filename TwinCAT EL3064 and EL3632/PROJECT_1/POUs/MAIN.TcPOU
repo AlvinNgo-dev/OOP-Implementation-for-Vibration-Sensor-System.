@@ -3,18 +3,17 @@
   <POU Name="MAIN" Id="{59796ef4-e6b1-401a-9440-11e7277419ec}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	EL3632 : FB_AnalogChannel;
-	EL3064 : FB_EL3064_Module;
-END_VAR
-]]></Declaration>
+    EL3632 : FB_EL3632_Module;
+    EL3064 : FB_EL3064_Module;
+END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[EL3632.Execute();
-EL3064.Execute();
-EL3064.Check_error();]]></ST>
+      <ST><![CDATA[EL3632.Update();
+EL3064.Update();
+]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="2" Count="0" />
-      <LineId Id="8" Count="1" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="26" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

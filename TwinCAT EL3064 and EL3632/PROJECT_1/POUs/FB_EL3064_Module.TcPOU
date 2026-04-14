@@ -1,68 +1,109 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.16">
   <POU Name="FB_EL3064_Module" Id="{9d201905-f01c-4ffa-b397-59a9a10c95b2}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_EL3064_Module
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_EL3064_Module IMPLEMENTS I_Module
 VAR_INPUT
-    Enable : BOOL := TRUE;
-END_VAR
-
-VAR_OUTPUT
-    AnyError : BOOL;
+    RawInputs AT %I* : ARRAY[1..4] OF INT;
 END_VAR
 
 VAR
-	Channels AT %I* : ARRAY[1..4] OF INT;
-    RawInputs AT %I* : ARRAY[1..4] OF INT;
-	VOLTAGE_1 : REAL;
-	VOLTAGE_2 : REAL;
-	VOLTAGE_3 : REAL;
-	VOLTAGE_4 : REAL;
-	ScaleFactor : REAL := 10.0 / 32767.0;
-    Threshold   : REAL := 0.5;
-	Error : BOOL;
-END_VAR
-]]></Declaration>
+    bEnable : BOOL := TRUE;
+
+    Voltages : ARRAY[1..4] OF REAL;
+    ScaleFactor : REAL := 10.0 / 32767.0;
+    Threshold : REAL := 0.5;
+
+    _AnyError : BOOL;
+END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
+    <Property Name="AnyError" Id="{2f3bd178-5ba1-44dc-b5c6-b65a2604a776}">
+      <Declaration><![CDATA[PROPERTY PUBLIC AnyError : BOOL]]></Declaration>
+      <Get Name="Get" Id="{86b62c6b-1870-41a0-80ee-a825570460ab}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[AnyError := _AnyError;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
     <Method Name="Check_error" Id="{02a9c999-ea26-46e0-89d9-7f3b8d161930}">
       <Declaration><![CDATA[METHOD PUBLIC Check_error : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[Error := VOLTAGE_1 < Threshold;]]></ST>
+        <ST><![CDATA[_AnyError := Voltages[1] < Threshold;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Execute" Id="{36067786-9e5d-477d-9d0c-456189522a0f}">
-      <Declaration><![CDATA[METHOD PUBLIC Execute
+    <Method Name="Convert" Id="{8b936555-96e1-47e5-b265-f8e9e906d669}">
+      <Declaration><![CDATA[METHOD PUBLIC Convert
+VAR
+    i : INT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[FOR i := 1 TO 4 DO
+    Voltages[i] := INT_TO_REAL(RawInputs[i]) * ScaleFactor;
+END_FOR]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Disable" Id="{1fd2e75c-301f-4ed5-be90-45404cdc46d7}">
+      <Declaration><![CDATA[METHOD PUBLIC Disable : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[AnyError := FALSE;
-IF NOT Enable THEN
-    RETURN;
-END_IF
+        <ST><![CDATA[bEnable := FALSE;
+Disable := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Enable" Id="{25076517-e91d-4282-acea-b89618e9e892}">
+      <Declaration><![CDATA[METHOD PUBLIC Enable : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bEnable := TRUE;
+Enable := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Update" Id="{36067786-9e5d-477d-9d0c-456189522a0f}">
+      <Declaration><![CDATA[METHOD PUBLIC Update
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT bEnable THEN RETURN; END_IF
 
-VOLTAGE_1 := INT_TO_REAL(RawInputs[1]); 
-VOLTAGE_2 := INT_TO_REAL(RawInputs[2]) * ScaleFactor;
-VOLTAGE_3 := INT_TO_REAL(RawInputs[3]) * ScaleFactor;
-VOLTAGE_4 := INT_TO_REAL(RawInputs[4]) * ScaleFactor;
-]]></ST>
+Convert();
+Check_error();]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="FB_EL3064_Module">
       <LineId Id="9" Count="0" />
     </LineIds>
+    <LineIds Name="FB_EL3064_Module.AnyError.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
     <LineIds Name="FB_EL3064_Module.Check_error">
       <LineId Id="5" Count="0" />
     </LineIds>
-    <LineIds Name="FB_EL3064_Module.Execute">
-      <LineId Id="8" Count="0" />
-      <LineId Id="11" Count="3" />
-      <LineId Id="10" Count="0" />
-      <LineId Id="16" Count="2" />
+    <LineIds Name="FB_EL3064_Module.Convert">
+      <LineId Id="8" Count="1" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EL3064_Module.Disable">
+      <LineId Id="6" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EL3064_Module.Enable">
+      <LineId Id="6" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EL3064_Module.Update">
+      <LineId Id="25" Count="2" />
       <LineId Id="15" Count="0" />
     </LineIds>
   </POU>

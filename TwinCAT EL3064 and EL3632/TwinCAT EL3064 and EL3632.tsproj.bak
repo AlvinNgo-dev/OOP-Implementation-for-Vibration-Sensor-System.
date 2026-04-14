@@ -2,15 +2,6 @@
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.71">
 	<DataTypes>
 		<DataType>
-			<Name GUID="{47A960A5-FA27-00CE-C256-D1FBA2A9645A}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..4] OF INT</Name>
-			<BitSize>64</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
-			<ArrayInfo>
-				<LBound>1</LBound>
-				<Elements>4</Elements>
-			</ArrayInfo>
-		</DataType>
-		<DataType>
 			<Name GUID="{3F5C5447-68BB-C561-3B28-81407DA132AE}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..10] OF INT</Name>
 			<BitSize>160</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
@@ -20,7 +11,16 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000001}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..0] OF BIT</Name>
+			<Name GUID="{47A960A5-FA27-00CE-C256-D1FBA2A9645A}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..4] OF INT</Name>
+			<BitSize>64</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
+			<ArrayInfo>
+				<LBound>1</LBound>
+				<Elements>4</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000001}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..0] OF BIT</Name>
 			<BitSize>1</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -29,7 +29,7 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{18071995-0000-0000-0000-002000000006}" IecBaseType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..5] OF BIT</Name>
+			<Name GUID="{18071995-0000-0000-0000-002000000006}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..5] OF BIT</Name>
 			<BitSize>6</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
 			<ArrayInfo>
@@ -57,15 +57,11 @@
 		</System>
 		<Plc>
 			<Project GUID="{5EDD252F-6B1C-414D-9F6B-4A1369637274}" Name="PROJECT_1" PrjFilePath="PROJECT_1\PROJECT_1.plcproj" TmcFilePath="PROJECT_1\PROJECT_1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PROJECT_1\PROJECT_1.tmc" TmcHash="{5E1080D2-6D38-8F76-215A-7CEEBC0B742E}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PROJECT_1\PROJECT_1.tmc" TmcHash="{E329182D-3AD9-F381-C925-130AE7108E7E}">
 					<Name>PROJECT_1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
-						<Var>
-							<Name>MAIN.EL3064.RawInputs</Name>
-							<Type GUID="{47A960A5-FA27-00CE-C256-D1FBA2A9645A}">ARRAY [1..4] OF INT</Type>
-						</Var>
 						<Var>
 							<Name>MAIN.EL3632.RawValue_Ch1</Name>
 							<Comment><![CDATA[ From %I*]]></Comment>
@@ -75,6 +71,10 @@
 							<Name>MAIN.EL3632.RawValue_Ch2</Name>
 							<Comment><![CDATA[ From %I*]]></Comment>
 							<Type GUID="{3F5C5447-68BB-C561-3B28-81407DA132AE}">ARRAY [1..10] OF INT</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.EL3064.RawInputs</Name>
+							<Type GUID="{47A960A5-FA27-00CE-C256-D1FBA2A9645A}">ARRAY [1..4] OF INT</Type>
 						</Var>
 					</Vars>
 					<UnrestoredVarLinks ImportTime="2026-01-14T15:32:53">

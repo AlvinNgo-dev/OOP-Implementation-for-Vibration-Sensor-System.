@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.16">
+  <Itf Name="I_Module" Id="{216f54f9-f4b7-40d5-80ff-d9b44682a07b}">
+    <Declaration><![CDATA[INTERFACE I_Module
+]]></Declaration>
+    <Method Name="Disable" Id="{729f04d6-993b-4ee0-bb89-3f657a8c4e40}">
+      <Declaration><![CDATA[METHOD PUBLIC Disable : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="Enable" Id="{22fd2e6a-c659-43a2-8b49-2909b3c4a1da}">
+      <Declaration><![CDATA[METHOD PUBLIC Enable : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="Update" Id="{7771f95b-00ff-485b-ab4c-ee08b7e5570b}">
+      <Declaration><![CDATA[METHOD PUBLIC Update
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>
