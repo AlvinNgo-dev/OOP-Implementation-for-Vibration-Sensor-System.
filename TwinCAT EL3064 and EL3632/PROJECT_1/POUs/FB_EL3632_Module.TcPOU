@@ -11,7 +11,7 @@ VAR
     bEnable : BOOL := TRUE;
     Scaled_Ch1 : ARRAY [1..10] OF REAL;
     Scaled_Ch2 : ARRAY [1..10] OF REAL;
-    ScaleFactor : REAL := 1.0; // adjust if needed
+    ScaleFactor : REAL := 0.1; // adjust if needed
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -24,7 +24,8 @@ END_VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[Channel1 := Scaled_Ch1;]]></ST>
+          <ST><![CDATA[Channel1 := Scaled_Ch1;
+]]></ST>
         </Implementation>
       </Get>
     </Property>
@@ -76,10 +77,11 @@ Read_Scale();
       </Implementation>
     </Method>
     <LineIds Name="FB_EL3632_Module">
-      <LineId Id="2" Count="0" />
+      <LineId Id="17" Count="0" />
     </LineIds>
     <LineIds Name="FB_EL3632_Module.Channel1.Get">
       <LineId Id="2" Count="0" />
+      <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_EL3632_Module.Disable">
       <LineId Id="6" Count="0" />

@@ -9,7 +9,10 @@ END_VAR
 VAR
     bEnable : BOOL := TRUE;
 
-    Voltages : ARRAY[1..4] OF REAL;
+    Voltage_1 : REAL;
+	Voltage_2 : REAL;
+	Voltage_3 : REAL;
+	Voltage_4 : REAL;
     ScaleFactor : REAL := 10.0 / 32767.0;
     Threshold : REAL := 0.5;
 
@@ -18,14 +21,14 @@ END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Property Name="AnyError" Id="{2f3bd178-5ba1-44dc-b5c6-b65a2604a776}">
-      <Declaration><![CDATA[PROPERTY PUBLIC AnyError : BOOL]]></Declaration>
+    <Property Name="Alarm_Error" Id="{2f3bd178-5ba1-44dc-b5c6-b65a2604a776}">
+      <Declaration><![CDATA[PROPERTY PUBLIC Alarm_Error : BOOL]]></Declaration>
       <Get Name="Get" Id="{86b62c6b-1870-41a0-80ee-a825570460ab}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[AnyError := _AnyError;]]></ST>
+          <ST><![CDATA[Alarm_Error := _AnyError;]]></ST>
         </Implementation>
       </Get>
     </Property>
@@ -35,18 +38,20 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[_AnyError := Voltages[1] < Threshold;]]></ST>
+        <ST><![CDATA[_AnyError := Voltage_1 < Threshold;]]></ST>
       </Implementation>
     </Method>
     <Method Name="Convert" Id="{8b936555-96e1-47e5-b265-f8e9e906d669}">
       <Declaration><![CDATA[METHOD PUBLIC Convert
 VAR
-    i : INT;
+
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[FOR i := 1 TO 4 DO
-    Voltages[i] := INT_TO_REAL(RawInputs[i]) * ScaleFactor;
-END_FOR]]></ST>
+        <ST><![CDATA[Voltage_1 := INT_TO_REAL(RawInputs[1]) * ScaleFactor;
+Voltage_2 := INT_TO_REAL(RawInputs[2]) * ScaleFactor;
+Voltage_3 := INT_TO_REAL(RawInputs[3]) * ScaleFactor;
+Voltage_4 := INT_TO_REAL(RawInputs[4]) * ScaleFactor;
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="Disable" Id="{1fd2e75c-301f-4ed5-be90-45404cdc46d7}">
@@ -84,14 +89,15 @@ Check_error();]]></ST>
     <LineIds Name="FB_EL3064_Module">
       <LineId Id="9" Count="0" />
     </LineIds>
-    <LineIds Name="FB_EL3064_Module.AnyError.Get">
+    <LineIds Name="FB_EL3064_Module.Alarm_Error.Get">
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="FB_EL3064_Module.Check_error">
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_EL3064_Module.Convert">
-      <LineId Id="8" Count="1" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="13" Count="2" />
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_EL3064_Module.Disable">

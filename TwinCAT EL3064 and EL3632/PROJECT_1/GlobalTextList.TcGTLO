@@ -120,6 +120,11 @@
               <v n="TextDefault">"V"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
+            <o>
+              <v n="TextID">"401"</v>
+              <v n="TextDefault">"Voltage: %.1f V "</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
           </l>
           <l n="Languages" t="ArrayList" />
           <v n="GuidInit">{31648393-b0ad-4af9-8034-5b69dc30a238}</v>

@@ -453,11 +453,11 @@
                     </o>
                     <o>
                       <v n="Id">390574330L</v>
-                      <v n="Value">"%.1f V "</v>
+                      <v n="Value">"Voltage: %.1f V "</v>
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"MAIN.EL3064.VOLTAGE_1"</v>
+                      <v n="Value">"MAIN.EL3064.Voltage_1"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -465,7 +465,7 @@
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
-                      <v n="Value">"450"</v>
+                      <v n="Value">"401"</v>
                     </o>
                   </l>
                 </o>
@@ -768,7 +768,7 @@
                     </o>
                     <o>
                       <v n="Id">2216112L</v>
-                      <v n="Value">"MAIN.EL3064.VOLTAGE_1"</v>
+                      <v n="Value">"MAIN.EL3064.Voltage_1"</v>
                     </o>
                     <o>
                       <v n="Id">637329562L</v>
@@ -999,7 +999,7 @@
                     </o>
                     <o>
                       <v n="Id">1518820177L</v>
-                      <v n="Value">"MAIN.EL3632.RawValue_Ch1"</v>
+                      <v n="Value">"MAIN.EL3632.Scaled_Ch1"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -1007,11 +1007,11 @@
                     </o>
                     <o>
                       <v n="Id">102497268L</v>
-                      <v n="Value">"MAIN.EL3632.RawValue_Ch1"</v>
+                      <v n="Value">"MAIN.EL3632.Scaled_Ch1"</v>
                     </o>
                     <o>
                       <v n="Id">4129603265L</v>
-                      <v n="Value">7</v>
+                      <v n="Value">14</v>
                     </o>
                     <o>
                       <v n="Id">3474540816L</v>
@@ -1023,7 +1023,7 @@
                     </o>
                     <o>
                       <v n="Id">788070771L</v>
-                      <v n="Value">"ARRAY [1..10] OF INT"</v>
+                      <v n="Value">"ARRAY [1..10] OF REAL"</v>
                     </o>
                     <o>
                       <v n="Id">3368668114L</v>
@@ -1714,11 +1714,11 @@
                     </o>
                     <o>
                       <v n="Id">1649127785L</v>
-                      <v n="Value">1174</v>
+                      <v n="Value">1173</v>
                     </o>
                     <o>
                       <v n="Id">357335551L</v>
-                      <v n="Value">315</v>
+                      <v n="Value">312</v>
                     </o>
                     <o>
                       <v n="Id">2422045748L</v>
@@ -1821,7 +1821,7 @@
                     </o>
                     <o>
                       <v n="Id">1518820177L</v>
-                      <v n="Value">"MAIN.EL3632.RawValue_Ch2"</v>
+                      <v n="Value">"MAIN.EL3632.Scaled_Ch2"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -1829,11 +1829,11 @@
                     </o>
                     <o>
                       <v n="Id">102497268L</v>
-                      <v n="Value">"MAIN.EL3632.RawValue_Ch2"</v>
+                      <v n="Value">"MAIN.EL3632.Scaled_Ch2"</v>
                     </o>
                     <o>
                       <v n="Id">4129603265L</v>
-                      <v n="Value">7</v>
+                      <v n="Value">14</v>
                     </o>
                     <o>
                       <v n="Id">3474540816L</v>
@@ -1845,7 +1845,7 @@
                     </o>
                     <o>
                       <v n="Id">788070771L</v>
-                      <v n="Value">"ARRAY [1..10] OF INT"</v>
+                      <v n="Value">"ARRAY [1..10] OF REAL"</v>
                     </o>
                     <o>
                       <v n="Id">3368668114L</v>
@@ -2698,11 +2698,11 @@
                     </o>
                     <o>
                       <v n="Id">390574330L</v>
-                      <v n="Value">"%.1f V "</v>
+                      <v n="Value">"Voltage: %.1f V "</v>
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"MAIN.EL3064.VOLTAGE_2"</v>
+                      <v n="Value">"MAIN.EL3064.Voltage_3"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -2710,7 +2710,7 @@
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
-                      <v n="Value">"450"</v>
+                      <v n="Value">"401"</v>
                     </o>
                   </l>
                 </o>
@@ -2910,7 +2910,7 @@
                     </o>
                     <o>
                       <v n="Id">1649127785L</v>
-                      <v n="Value">254</v>
+                      <v n="Value">257</v>
                     </o>
                     <o>
                       <v n="Id">357335551L</v>
@@ -3013,7 +3013,7 @@
                     </o>
                     <o>
                       <v n="Id">2216112L</v>
-                      <v n="Value">"MAIN.EL3064.VOLTAGE_2"</v>
+                      <v n="Value">"MAIN.EL3064.Voltage_3"</v>
                     </o>
                     <o>
                       <v n="Id">637329562L</v>
@@ -3170,11 +3170,11 @@
                     </o>
                     <o>
                       <v n="Id">390574330L</v>
-                      <v n="Value">"%.1f V "</v>
+                      <v n="Value">"Voltage: %.1f V "</v>
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"MAIN.EL3064.VOLTAGE_3"</v>
+                      <v n="Value">"MAIN.EL3064.Voltage_2"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -3182,7 +3182,7 @@
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
-                      <v n="Value">"450"</v>
+                      <v n="Value">"401"</v>
                     </o>
                   </l>
                 </o>
@@ -3485,7 +3485,7 @@
                     </o>
                     <o>
                       <v n="Id">2216112L</v>
-                      <v n="Value">"MAIN.EL3064.VOLTAGE_3"</v>
+                      <v n="Value">"MAIN.EL3064.Voltage_2"</v>
                     </o>
                     <o>
                       <v n="Id">637329562L</v>
@@ -3642,11 +3642,11 @@
                     </o>
                     <o>
                       <v n="Id">390574330L</v>
-                      <v n="Value">"%.1f V "</v>
+                      <v n="Value">"Voltage: %.1f V "</v>
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"MAIN.EL3064.VOLTAGE_4"</v>
+                      <v n="Value">"MAIN.EL3064.Voltage_4"</v>
                     </o>
                     <o>
                       <v n="Id">2597686782L</v>
@@ -3654,7 +3654,7 @@
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
-                      <v n="Value">"450"</v>
+                      <v n="Value">"401"</v>
                     </o>
                   </l>
                 </o>
@@ -3957,7 +3957,7 @@
                     </o>
                     <o>
                       <v n="Id">2216112L</v>
-                      <v n="Value">"MAIN.EL3064.VOLTAGE_4"</v>
+                      <v n="Value">"MAIN.EL3064.Voltage_4"</v>
                     </o>
                     <o>
                       <v n="Id">637329562L</v>
@@ -4273,7 +4273,7 @@
             </o>
             <v n="DialogDut">{58aa014a-7ee4-4888-90e5-f65bc88aa597}</v>
           </o>
-          <v n="LastUsedIdForIdentifier">104</v>
+          <v n="LastUsedIdForIdentifier">105</v>
           <o n="TextDocument" t="TextDocument">
             <a n="TextLines" cet="TextLine">
               <o>
